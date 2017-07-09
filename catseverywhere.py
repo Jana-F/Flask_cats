@@ -4,6 +4,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 email_addresses = []
+stranka = "/static/a.jpg"
 
 
 @app.route('/')
@@ -25,10 +26,18 @@ def emails():
     return render_template('emails.html', email_addresses=email_addresses)
 
 
-@app.route('/static/cat.jpg')
+@app.route('/static/b.jpg')
 def link():
     if request.method == 'POST':
-        return redirect(url_for('/static/cat.jpg'))
+        return redirect(url_for('/static/b.jpg'))
+    else:
+        return render_template('/')
+
+
+@app.route(stranka)
+def test():
+    if request.method == 'POST':
+        return redirect(url_for(stranka))
     else:
         return render_template('/')
 
